@@ -1,2 +1,3 @@
 # Algorithm-Part-I---Coursera
-codes through the course
+in this respiratory i will attach codes through the course which i will face
+one more thing is that the weeks will be devided as the time
