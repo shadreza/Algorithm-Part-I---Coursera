@@ -1,54 +1,50 @@
 import java.util.Scanner;
-
-class StringOfStacks {
-    class node{
-        String s;
-        node next;
+public class StackOfStrings{
+    private int totalsize =0;
+    private int usedsize = 0;
+    String[] arrayofstrings;
+    StackOfStrings(int size){
+        totalsize=size;
+        arrayofstrings = new String[size];
     }
-    private node head= new node();
-    private node tail= new node();
-    private int size = 0;
-    public void push(String ss){
-        size++;
-        node tmp = new node();
-        tmp.s=ss;
-        if(size==1){
-            head.next=tmp;
-            tmp.next=tail;
-            tail.next=null;
+    public void push(String s){
+        if(usedsize>=totalsize){
+            System.out.println("Stack is Full");
+            return;
         }
-        else{
-            tmp.next=head.next;
-            head.next=tmp;
-        }
+        arrayofstrings[usedsize]=s;
+        usedsize++;
+        System.out.println("Successful");
     }
     public void pop(){
-        if(size>0){
-            size--;
-            head.next=head.next.next;
+        if(usedsize<=0){
+            System.out.println("Stack already empty");
+            return;
         }
+        arrayofstrings[usedsize-1]=null;
+        usedsize--;
+        System.out.println("Successful");
     }
     public void show(){
-        node i = head.next;
-        while(i.next!=null){
-            System.out.println(i.s);
-            i=i.next;
+        for(int i=usedsize;i>0;i--){
+            System.out.println(arrayofstrings[i-1]);
         }
     }
     public static void main(String[] args) {
-        StringOfStacks l = new StringOfStacks();
-        System.out.println("if want ot terminate press -1 else give strings");
         Scanner inp = new Scanner(System.in);
-        String s = inp.next();
-        while(!s.equals("-1")){
-            if(s.equals("-")){
-                l.pop();
+        System.out.println("Size?");
+        int size = inp.nextInt();
+        StackOfStrings s = new StackOfStrings(size);
+        String ss = inp.next();
+        while(!ss.equals("-1")){
+            if(ss.equals("-")){
+                s.pop();
             }
             else{
-                l.push(s);
+                s.push(ss);
             }
-            l.show();
-            s=inp.next();
+            s.show();
+            ss=inp.next();
         }
     }
 }
