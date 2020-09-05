@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class QueueOfStrings<Items> {    /// using generics
     public class node{
-        Items s=null;
+        Items s;
         node next=null;
         node prev=null;
     }
